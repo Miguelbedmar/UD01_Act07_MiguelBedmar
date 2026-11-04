@@ -48,9 +48,12 @@ fun menuPrincipal(){
                     println()
                 }
                 4-> {
+                   println()
+                }
+                5->{
                     salir=true
                     println("Hasta luego")
-                    println("Has salido del programa....")
+                    println("Has salido del programa....") 
                 }
 
                 else -> println("Opción introducida no disponible.")
