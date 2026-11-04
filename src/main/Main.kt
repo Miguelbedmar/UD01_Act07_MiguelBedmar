@@ -27,11 +27,11 @@ fun menuPrincipal(){
     do {
         try {
             println("AGENDA CONTACTOS".formateoMenuPrincipalContacto(ancho))
+            println("0. Salir de la Agenda".formateoMenuPrincipalContacto(ancho))
             println("1. Añadir contacto".formateoMenuPrincipalContacto(ancho))
             println("2. Listar contacto".formateoMenuPrincipalContacto(ancho))
             println("3. Buscar contacto".formateoMenuPrincipalContacto(ancho))
             println("4. Eliminar contacto".formateoMenuPrincipalContacto(ancho))
-            println("5. Salir de la Agenda".formateoMenuPrincipalContacto(ancho))
             println("Seleccione una opción".formateoMenuPrincipalContacto(ancho))
             if(!sc.hasNextInt()) {
                 sc.next()
@@ -50,7 +50,7 @@ fun menuPrincipal(){
                 4-> {
                    println()
                 }
-                5->{
+                0->{
                     salir=true
                     println("Hasta luego")
                     println("Has salido del programa....")
