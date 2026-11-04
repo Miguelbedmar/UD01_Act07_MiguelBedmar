@@ -35,7 +35,7 @@ fun menuPrincipal(){
                 }
                 4-> {
                     salir=true
-                    println("Vuelve pronto ${Usuario.getNombre()}") // Despedimos al usuario
+                    println("Hasta luego")
                     println("Has salido del programa....")
                 }
 
@@ -46,14 +46,14 @@ fun menuPrincipal(){
 
 
         }catch (ex: Exception){
-            println("${ROJO} ERROR! Valor inválido detectado $RESET")
+            println("${ROJO} ERROR! Valor inválido detectado $RESET"+ex.message)
         }catch ( e:NoSuchElementException){
-            println("${ROJO} ERROR! ERROR!: Has salido fuera del fichero $RESET ")
+            println("${ROJO} ERROR! ERROR!: Has salido fuera del fichero $RESET "+e.message)
             salir=true
         }
 
     }while (!salir)
 }
 fun main() {
-
+menuPrincipal()
 }
