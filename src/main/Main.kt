@@ -23,11 +23,11 @@ return "<"+"=".repeat(izq)+textoEspacio+"=".repeat(de)+">"
 
 fun menuPrincipal(){
     var salir=false
-    val ancho=40
+    val ancho=40 // Ancho predeterminado para rellenar con <==>
     do {
         try {
             println("AGENDA CONTACTOS".formateoMenuPrincipalContacto(ancho))
-            println("0. Salir de la Agenda".formateoMenuPrincipalContacto(ancho))
+            println("0. Salir de la Agenda".formateoMenuPrincipalContacto(ancho)) 
             println("1. Añadir contacto".formateoMenuPrincipalContacto(ancho))
             println("2. Listar contacto".formateoMenuPrincipalContacto(ancho))
             println("3. Buscar contacto".formateoMenuPrincipalContacto(ancho))
@@ -71,6 +71,6 @@ fun menuPrincipal(){
 
     }while (!salir)
 }
-fun main() {
+fun main() { 
 menuPrincipal()
 }

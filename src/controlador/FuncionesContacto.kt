@@ -2,7 +2,7 @@ package controlador
 
 
 
-class funcionesContacto {
+class FuncionesContacto {
 
     fun anadirContacto(){
 
