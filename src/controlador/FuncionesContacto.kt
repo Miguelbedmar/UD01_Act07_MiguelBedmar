@@ -30,7 +30,11 @@ class FuncionesContacto(private val agenda:Agenda= Agenda()) {
              require(telefono.isNotEmpty()&&telefono.all { it.isDigit() }){
                  "${ROJO} ERROR!  el telefono debe contener digitos $RESET"
              }
-             var telefonoConvertido= parseInt(telefono) // Parseamos telefono de string a int
+             val telefonoConvertido= parseInt(telefono) // Parseamos telefono de string a int
+
+             if(telefonoConvertido!=9){
+                 
+             }
 
 
 
