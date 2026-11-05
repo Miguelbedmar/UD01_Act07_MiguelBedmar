@@ -7,7 +7,7 @@ class FuncionesContacto(private val agenda:Agenda= Agenda()) {
     val ROJO="\u001B[31m"
     val RESET = "\u001B[0m"
     var controladorBucle=false
-    val expresionTelefono=""
+    val expresionTelefono="^(?:\\\\+34|0034|34)?[6-9]\\\\d{8}\$".toRegex() // Con la funcion toRegex convertimos el string a una expresion regular
     val expresionEmail=""
     fun anadirContacto(contacto: Contacto){
      while (!controladorBucle) {
@@ -26,14 +26,15 @@ class FuncionesContacto(private val agenda:Agenda= Agenda()) {
              println("Ingrese el apellido a añadir")
              val apellido=readlnOrNull()?.trim() ?: return
              require( apellido.isNotEmpty()){"${ROJO} ERROR! el apellido no puede estar vacio $RESET"}
-             var telefono = readlnOrNull()?.trim()?: return
-             require(telefono.isNotEmpty()&&telefono.all { it.isDigit() }){
+             val telefono = readlnOrNull()?.trim()?: return
+             require(telefono.isNotEmpty()&&expresionTelefono.matches(telefono)&&telefono.all { it.isDigit() }){
                  "${ROJO} ERROR!  el telefono debe contener digitos $RESET"
              }
              val telefonoConvertido= parseInt(telefono) // Parseamos telefono de string a int
 
              if(telefonoConvertido!=9){
-                 
+                 println("${ROJO} El telefono no tiene la longitud  valida $RESET")
+                  continue
              }
 
 
