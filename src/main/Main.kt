@@ -26,7 +26,7 @@ fun menuPrincipal(){
     val ancho=40 // Ancho predeterminado para rellenar con <==>
     do {
         try {
-            println("AGENDA CONTACTOS".formateoMenuPrincipalContacto(ancho))
+            println("AGENDA DE CONTACTOS".formateoMenuPrincipalContacto(ancho))
             println("0. Salir de la Agenda".formateoMenuPrincipalContacto(ancho)) 
             println("1. Añadir contacto".formateoMenuPrincipalContacto(ancho))
             println("2. Listar contacto".formateoMenuPrincipalContacto(ancho))

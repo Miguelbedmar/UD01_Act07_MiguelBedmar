@@ -1,4 +1,4 @@
 package modelo 
 
-data class Agenda (val contactoAgenda=mutableListOf<Contacto>() // Creamos una lista mutable de contacto
+data class Agenda (val contactoAgenda:MutableList<Contacto> =mutableListOf()// Creamos una lista mutable de contacto
 )
