@@ -1,11 +1,12 @@
 package main
 import java.util.Scanner
 import java.util.Locale
-
+import controlador.FuncionesContacto
 val sc=  Scanner(System.`in`).useLocale(Locale.US)
 val ROJO="\u001B[31m" // Creamos una variable con el nombre del color  para perzonalizar los mensajes de errores
 val RESET = "\u001B[0m" // Reseteamos el color al terminar el mensaje de error
 
+val funciones = FuncionesContacto()
 fun String.formateoMenuPrincipalContacto(anchoTotal:Int):String{ // Creamos una función extension
     val ancho= anchoTotal-2 // restamos dos al ancho total para centrarlo
     if(this.length>=ancho)return "<$this>" // comprobamos si la longitud es superior  a la cadena de caracteres
@@ -40,16 +41,11 @@ fun menuPrincipal(){
             }
             val opcion = sc.nextInt()
             when(opcion){
-                1-> println()
-                2->{
-                    println()
-                }
-                3-> {
-                    println()
-                }
-                4-> {
-                    println()
-                }
+                1-> funciones.anadirContacto()
+                2->funciones.mostarListaContacto()
+                3->funciones.buscarContacto()
+                4-> funciones.eliminarContacto()
+
                 0->{
                     salir=true
                     println("Hasta luego")

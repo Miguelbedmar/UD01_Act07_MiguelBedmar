@@ -14,7 +14,7 @@ class FuncionesContacto(private val agenda:Agenda= Agenda()) {
     val expresionEmail="^[\\w.-]+@[\\w-]+\\.[\\w-]+$".toRegex()
      // Constantes de mensajeError
      val mensajeError="${ROJO} La agenda no contiene contactos $RESET"
-    fun anadirContacto(contacto: Contacto){
+    fun anadirContacto(){
         var controladorBucle=false
 
         while (!controladorBucle) {
@@ -80,21 +80,33 @@ class FuncionesContacto(private val agenda:Agenda= Agenda()) {
             return
         }
 
+        try {
+            println("Introduce el nombre que desee buscar")
+            val nombreContac = readlnOrNull()?.trim() ?: return // registramos el nombre
 
-        println("Introduce el nombre que desee buscar")
-        val nombreContac= readlnOrNull()?.trim()?:return // registramos el nombre
+            if (nombreContac.isEmpty()) {
+                println("${ROJO} ERROR! El nombre no existe entre los contacos $RESET")
+                return
+            }
+            val nombrebuscado = agenda.contactoAgenda.filter {
+                "${it.nombre} ${it.apellido}".contains(
+                    nombreContac,
+                    ignoreCase = true
+                )
+            } // Filtro por nombre
 
-        if(nombreContac.isEmpty()){
-            println("${ROJO} ERROR! El nombre no existe entre los contacos $RESET")
-            return
-        }
-        val nombrebuscado= agenda.contactoAgenda.filter { "${it.nombre} ${it.apellido}".contains(nombreContac,ignoreCase = true) } // Filtro por nombre
+            if (nombrebuscado.isEmpty()) {
+                println("${ROJO}  ERRO! no se han encontrado ningun contacto con ese nombre $RESET")
+                return
+            } else {
+                imprimirListaContacto() // LLamamos a imprimir lista
+            }
+        }catch (e:IllegalArgumentException){
+            println("${ROJO} ERROR!  Valor no válido $RESET")
 
-        if(nombrebuscado.isEmpty()){
-            println("${ROJO}  ERRO! no se han encontrado ningun contacto con ese nombre $RESET")
-            return
-        }else{
-            imprimirListaContacto() // LLamamos a imprimir lista
+        }catch (e:IOException){
+            println("${ROJO} ERROR! Has accedido más alla del programa $RESET")
+            exitProcess(0)
         }
     }
     fun eliminarContacto(){
