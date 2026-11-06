@@ -28,17 +28,14 @@ UD01_Act07_MiguelBedmar/
 
 # 🗼FASES del proyecto.
 El proyecto se encuentra divido en 8 fases que son las siguientes a continuación.
-
 - FASE 1: CREACIÓN DE PROYECTO ✅
 - FASE 2: DEFINICIÓN DE ESTRUCTURAS DE DATOS ✅ 
 - FASE 3: MENU PRINCIPAL ✅
-- FASE 4: FUNCIÓN AÑADIR CONTACTO👷 ---->  se creara un fichero kotlin dentro del paquete controlador para  ello incluyendo las fases 5 , 6 Y 7 ✖️
-- FASE 5: LISTAR CONTACTOS.✖️
-- FASE 6: BUSCAR CONTACTOS.✖️
-- FASE 7: ELIMINAR CONTACTO.✖️
-- FASE 8: VALIDACIONES MÍNIMAS.👷
-
-
+- FASE 4: FUNCIÓN AÑADIR CONTACTO✅
+- FASE 5: LISTAR CONTACTOS.✅
+- FASE 6: BUSCAR CONTACTOS.✅
+- FASE 7: ELIMINAR CONTACTO.✅
+- FASE 8: VALIDACIONES MÍNIMAS.✅
 # 🧑‍💻 Tecnología.
 - KOTLIN
 - Git
