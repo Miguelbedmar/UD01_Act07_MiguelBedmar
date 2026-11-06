@@ -36,10 +36,7 @@ class FuncionesContacto(private val agenda:Agenda= Agenda()) {
              require(telefono.isNotEmpty()&&expresionTelefono.matches(telefono)&&telefono.all { it.isDigit() }){
                  "${ROJO} ERROR!Telefono no válido $RESET"
              }
-             if(telefono.length!=9){ // Comprobamos la longitud
-                 println("${ROJO} longitud del telefono invalida$RESET")
-                 continue
-             }
+
              //pedimos el apellido ha añadir
              println("Ingrese el apellido a añadir")
              val apellido=readlnOrNull()?.trim() ?: return
@@ -115,7 +112,7 @@ class FuncionesContacto(private val agenda:Agenda= Agenda()) {
         }
         imprimirListaContacto()
         try {
-            println("Itroduce el numero  de contacto a eliminar")
+            println("Itroduce el  indice del contacto  a eliminar")
             val numeroContac = readlnOrNull()?.trim()?.toIntOrNull()
 
             if (numeroContac == null || numeroContac !in 1..agenda.contactoAgenda.size) {
