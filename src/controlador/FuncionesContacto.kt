@@ -23,7 +23,7 @@ class FuncionesContacto(private val agenda:Agenda= Agenda()) {
               * muy útil incorporada en las librerias estandars de kotlin
               * Require es una función que evaluea una condicion boolean
               * si devuelve true el codigo  continua , en cambio si devuelve
-              * false lanza una excepcionde tipo illegalAccesError
+              * false lanza una excepcionde tipo illegalArgumentError
               * require tambien nos permite personalizar mensajes de errores **/
 
              //Pedimos el nombre del contacto a añadir
@@ -57,7 +57,7 @@ class FuncionesContacto(private val agenda:Agenda= Agenda()) {
              controladorBucle = true
 
          } catch (e: IllegalArgumentException) {
-             println("${ROJO} ERROR!  valor no válido!$RESET")
+             println(e.message)
 
          } catch (e: IOException) {
              println("${ROJO}ERROR! has accedido fuera del programa $RESET")
