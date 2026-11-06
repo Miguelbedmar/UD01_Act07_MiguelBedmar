@@ -3,6 +3,7 @@ import modelo.*
 import java.io.IOException
 import java.lang.Integer.parseInt
 import kotlin.collections.sortBy
+import kotlin.system.exitProcess
 
 class FuncionesContacto(private val agenda:Agenda= Agenda()) {
     // Colores
@@ -55,7 +56,7 @@ class FuncionesContacto(private val agenda:Agenda= Agenda()) {
              println("Se ha añadido el contacto correctamente")
              controladorBucle = true
 
-         } catch (e: IllegalAccessError) {
+         } catch (e: IllegalArgumentException) {
              println("${ROJO} ERROR!  valor no válido!$RESET")
 
          } catch (e: IOException) {
@@ -100,12 +101,24 @@ class FuncionesContacto(private val agenda:Agenda= Agenda()) {
         if(agenda.contactoAgenda.isNotEmpty()){
             println(mensajeError)
         }
+        imprimirListaContacto()
+        try {
+            println("Itroduce el numero  de contacto a eliminar")
+            val numeroContac = readlnOrNull()?.trim()?.toIntOrNull()
 
-        println("Itroduce el numero  de contacto a eliminar")
-        val numeroContac= readlnOrNull()?.trim()?.toIntOrNull()
-
-
-    }
+            if (numeroContac == null || numeroContac !in 1..agenda.contactoAgenda.size) {
+                println("${ROJO} ERROR! EL contacto no existe  $RESET")
+                return
+            }
+            agenda.contactoAgenda.removeAt(numeroContac - 1)
+            println("Agenda eliminada correctamente")
+        }catch (e:IllegalArgumentException){
+            println("${ROJO} ERROR!  Valor no válido $RESET")
+        }catch (e: IOException){
+                println("${ROJO} ERROR! Has accedido más alla del programa $RESET")
+                exitProcess(0)
+        }
+        }
 
 
    private fun imprimirListaContacto(){ // Esta función imprime la lista de contactos en buscar y listar  para evitar duplicar codigo,
