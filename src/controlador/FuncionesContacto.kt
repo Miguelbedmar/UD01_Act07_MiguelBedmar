@@ -2,6 +2,7 @@ package controlador
 import modelo.*
 import java.io.IOException
 import java.lang.Integer.parseInt
+import kotlin.collections.sortBy
 
 class FuncionesContacto(private val agenda:Agenda= Agenda()) {
     val ROJO="\u001B[31m"
@@ -45,7 +46,9 @@ class FuncionesContacto(private val agenda:Agenda= Agenda()) {
              val email = readlnOrNull()?.trim()?:return
              require(email.isNotEmpty()&&expresionEmail.matches(email)){"${ROJO} ERROR! Email no válido $RESET"}
 
-            agenda.contactoAgenda.add(Contacto(nombre,apellido,telefono,email))
+             agenda.contactoAgenda.add(Contacto(nombre,apellido,telefono,email)) // Añadimos los datos a la lista de contacto
+             agenda.contactoAgenda.sortBy { it.nombre.lowercase()} // he utilizado lowecase porque  a partir de la version 1.5 toLowerCase se convirtio en un metodo obsoleto.
+
              println("Se ha añadido el contacto correctamente")
              controladorBucle = true
 
@@ -57,7 +60,44 @@ class FuncionesContacto(private val agenda:Agenda= Agenda()) {
              controladorBucle=true
          }
      }
+    }
 
+    fun mostarListaContacto() {
+        if (agenda.contactoAgenda.isEmpty()) {
+            println("${ROJO} La agenda no contiene contactos $RESET")
+            return
+        }
+        imprimirListaContacto()
+    }
+
+    fun buscarContacto(){
+        if (agenda.contactoAgenda.isEmpty()) { // Comprobamos que la agenda no este vacia
+            println("${ROJO} La agenda no contiene contactos $RESET")
+            return
+        }
+
+
+        println("Introduce el nombre que desee buscar")
+        val nombreContac= readlnOrNull()?.trim()?:return // registramos el nombre
+
+        if(nombreContac.isEmpty()){
+            println("${ROJO} ERROR! El nombre no existe entre los contacos $RESET")
+            return
+        }
+        val nombrebuscado= agenda.contactoAgenda.filter { "${it.nombre} ${it.apellido}".contains(nombreContac,ignoreCase = true) } // Filtro por nombre
+
+        if(nombrebuscado.isEmpty()){
+            println("${ROJO}  ERRO! no se han encontrado ningun contacto con ese nombre $RESET")
+            return
+        }else{
+            imprimirListaContacto() // LLamamos a imprimir lista
+        }
+    }
+
+    
+
+   private fun imprimirListaContacto(){ // Esta función imprime la lista de contactos en buscar y listar  para evitar duplicar codigo,
+        agenda.contactoAgenda.forEachIndexed { index, contacto ->println("${index+1}.${contacto.nombre}-${contacto.apellido}-${contacto.telefono}-${contacto.email}")  }
 
     }
 
