@@ -45,7 +45,7 @@ class FuncionesContacto(private val agenda:Agenda= Agenda()) {
 
              println("Ingrese el email (Ej:ejemplo123@gmail.com)")
              val email = readlnOrNull()?.trim()?:return
-             require(email.isNotEmpty()&&expresionEmail.matches(email)){"${ROJO} ERROR! Email no válido $RESET"}
+             require(email.isNotEmpty()&&expresionEmail.matches(email)){"${ROJO} ERROR! Email no válido $RESET"} // Validamos si el email cumple con la expresion regular
 
              agenda.contactoAgenda.add(Contacto(nombre,apellido,telefono,email)) // Añadimos los datos a la lista de contacto
              agenda.contactoAgenda.sortBy { it.nombre.lowercase()} // he utilizado lowecase porque  a partir de la version 1.5 toLowerCase se convirtio en un metodo obsoleto.
@@ -64,7 +64,7 @@ class FuncionesContacto(private val agenda:Agenda= Agenda()) {
     }
 
     fun mostarListaContacto() {
-        if (agenda.contactoAgenda.isEmpty()) {
+        if (agenda.contactoAgenda.isEmpty()) { // Compruebo si se encuentra vacía
             println(mensajeError)
             return
         }
